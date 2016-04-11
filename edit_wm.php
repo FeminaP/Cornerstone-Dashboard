@@ -1,18 +1,11 @@
-
-
-
 <?php
-
 require ("header.php");
-
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname= "crst_dashboard";
-
 // Create Connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
@@ -20,17 +13,14 @@ if (!empty($_REQUEST['frmSearch'])){
 	
 	$term = mysqli_real_escape_string($conn,$_REQUEST['frmSearch']);
 	
-
 	$sql = "SELECT * FROM materials WHERE job_id = '$term'"; 
 	$result = mysqli_query($conn,$sql); 
 	
 	
 	
 	if ($result->num_rows > 0) {
-
 		$row = $result->fetch_assoc();	
 	
-
 		$job_id = $row['job_id'];
 		$materials_ordered = $row['materials_ordered'];
 		$expected = $row['expected'];
@@ -53,7 +43,6 @@ if (!empty($_REQUEST['frmSearch'])){
 		$display = "no";
 	}
 }
-
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>

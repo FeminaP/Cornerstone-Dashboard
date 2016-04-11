@@ -52,21 +52,17 @@ require ("header.php");
 						$username = "root";
 						$password = "";
 						$dbname= "crst_dashboard";
-
 						// Create Connection
 						$conn = new mysqli($servername, $username, $password, $dbname);
 						$result = $conn->query("select vendor_name from vendors");
 						echo("<div class='tabinner detail'>");
 						echo "<label>Vendor</label><select name='vendor_name'>";
-
 						while ($row = $result->fetch_assoc()) {
-
 									  unset($vendor_name);
 									  $vendor_name = $row['vendor_name']; 
 									  echo '<option value="'.$vendor_name.'">'.$vendor_name.'</option>';
 									 
 						}
-
 						echo "</select>";
 						echo "</div>";
 						?>
