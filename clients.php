@@ -2,28 +2,10 @@
 require ("header.php");
 ?>
 <style>
-table {
-    width: 40em;
-    margin: 2em auto;
-}
-
-thead {
-    background: #000;
-    color: #fff;
-}
-
-td {
-    width: 10em;
-    padding: 0.3em;
-}
-
-tbody {
-    background: #ccc;
-}
-
-div.pager {
-    text-align: center;
-    margin: 1em 0;
+#table-scroll {
+  height:auto;
+  width:850px;
+  overflow:auto;   
 }
 
 div.pager span {
@@ -33,15 +15,15 @@ div.pager span {
     line-height: 1.8;
     text-align: center;
     cursor: pointer;
-    background: #000;
-    color: #fff;
     margin-right: 0.5em;
 }
 
 div.pager span.active {
     background: #c00;
 }
+
 </style>
+
 <div class="content">
 <div class="content-box">
 <div class="topbar">
@@ -77,10 +59,11 @@ if ($conn->connect_error) {
 $result = mysqli_query($conn,"SELECT * FROM client_info");
 
 
-echo "<table  border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
+echo " <div id='table-scroll'><table  border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
 echo "<thead>";
 echo "<tr><th> Client name </th><th> Contact name </th><th> Address </th><th> Contact Phone </th><th> Email </th><th> Website </th><th> Category </th><th> Title </th><th> Notes </th></tr>";
 echo "</thead>";
+echo "<tbody>";
 
 
 if ($result->num_rows > 0) {
@@ -90,9 +73,9 @@ if ($result->num_rows > 0) {
 		
 
 
-		echo "<tr><td>"."<a href='http://localhost/crst_dashboard/client_info.php'>".$row["client_name"]."</a>"."</td><td>".  $row["contact_name"]."</td><td>". $row["client_add"]. "</td><td>". $row["contact_phone"]. "</td><td>". $row["contact_email"]."</td><td>". $row["website"]. "</td><td>". $row["category"]. "</td><td>". $row["title"]. "</td><td>". $row["notes"]. "</td></tr>";
+		echo "<tr><td>".$row["client_name"]."</td><td>".  $row["contact_name"]."</td><td>". $row["client_add"]. "</td><td>". $row["contact_phone"]. "</td><td>". $row["contact_email"]."</td><td>". $row["website"]. "</td><td>". $row["category"]. "</td><td>". $row["title"]. "</td><td>". $row["notes"]. "</td></tr>";
     }
-	echo "<br>";
+	echo "</tbody></table></div><br>";
 } else {
     echo "0 results";
 }
@@ -100,68 +83,17 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 ?>
-<!--<div class="allcontacts-table">
-<table border="0" cellspacing="0" cellpadding="0" class="table-bordered allcontacts-table">
-	<tbody>
-		<tr valign="top">
-			<th class="allcontacts-title">All Clients</th>
-			<th class="column-editorbtn">Column Editor</th>
-		</tr>
-		<tr valign="top">
-			<td colspan="2">
-				<table border="0" cellspacing="0" cellpadding="0" class="table-striped main-table clients-list">
-					<tbody>
-						<tr valign="top" class="client-headers">
-							<th>Client Name</th>
-							<th>Full Name</th>
-							<th>Address</th>
-							<th>Phone Number</th>
-							<th>Category</th>
-							<th>Actions</th>
-						</tr>
-						<tr>
-						<td class="maintable-thtwo data-cell"></td>
-						<td class="maintable-thtwo data-cell"></td>
-						<td class="maintable-thtwo data-cell"></td>
-						<td class="maintable-thtwo data-cell"></td>
-						<td class="maintable-thtwo data-cell"></td>
-						<td class="maintable-thnine"><a href="#"></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
+
 </div>
-<div class="allclients-breadcrumbs">
-	<div class="allclients-breadcrumbsleft page-control">
-		<nav>
-			<ul class="pagination">
-				<li class="current"><a class="page" href="#">1<span class="sr-only">(current)</span></a></li>
-				<li><a class="page" href="#">2<span class="sr-only">(current)</span></a></li>
-				<li><a class="page" href="#">3<span class="sr-only">(current)</span></a></li>
-				<li><a class="page" href="#">4<span class="sr-only">(current)</span></a></li>
-				<li><a class="page" href="#">5<span class="sr-only">(current)</span></a></li>
-				<li><a class="next" href="#">Next<span class="sr-only">(current)</span></a></li>
-			</ul>
-		</nav>
-	</div>
-</div>-->
+</div>		
 </div>
-</div>			
-				
-</div>	
 <script>
-/*$('td', 'table').each(function(i) {
-    $(this).text(i+1);
-});
-*/
+
 
 
 $('table.paginated').each(function() {
     var currentPage = 0;
-    var numPerPage = 5;
+    var numPerPage = 10;
     var $table = $(this);
     $table.bind('repaginate', function() {
         $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
@@ -181,7 +113,8 @@ $('table.paginated').each(function() {
     }
     $pager.insertBefore($table).find('span.page-number:first').addClass('active');
 });
-</script>
+</script>	
+
 	
 
 						

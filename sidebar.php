@@ -9,6 +9,7 @@
 	<li><a href="reminders.php"><i class="icon"><img src="images/web-icons/reminders.png"></i>Reminders</a></li>
     <li><a href="weights_and_measure.php"><i class="icon"><img src="images/web-icons/w_m.png"></i>Weights and Measures</a></li>
 	<li><a href=""><i class="icon"><img src="images/web-icons/archive.png"></i>Archive Jobs</a></li>
+	<li><a href="job_ticket.php"><i class="icon"><img src="images/web-icons/archive.png"></i>Job Ticket</a></li>
   </ul>
   <div class="crst_circle">
 	<img id="circle-logo" src="images/crst_circle-logo.png">

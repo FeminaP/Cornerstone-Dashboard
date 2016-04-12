@@ -6,7 +6,8 @@ require ("header.php");
 <div class="content-box">
 <div class="topbar">
 <h1>Vendors</h1>
-<a href="add_vendor.php" class="add_button">Add Vendor</a>
+<a href="add_vendor.php" class="add_button">Add Vendor</a><br>
+<a href="add_pop_wm.php" class="add_button">Add Poupular W & M</a>
 </div>
 <div class="search-cont">
 	<div class="searchcont-detail">
@@ -53,7 +54,7 @@ if ($result->num_rows > 0) {
 				echo "Website: ".$row["vendor_website"];
 			echo "</div>";
 				
-			echo "<input type='submit' value='show'>";		
+	
 					echo "<div>";
 							
 					$result1 = mysqli_query($conn,"SELECT * FROM w_and_m WHERE vendor='$x'");

@@ -12,35 +12,91 @@ require ("header.php");
 				<form action="add_w_m.php" method="post">
 					<div class="newclienttab-inner">
 						<div class="tabinner detail">
-						<label>Job Id</label>
-						<input name="job_id" type="text" class="contact-prefix">
-						</div>
-						<div class="tabinner detail">
-						<label>Materials Ordered</label>
-						<input name="materials_ordered" type="date" class="contact-prefix">
-						</div>
-						<div class="tabinner detail">
-						<label>Expected Date</label>
-						<input name="expected" type="date" class="contact-prefix">
-						</div>
+						<label>Job Id</label><select name='job_id' class="contact-prefix">
+						<?php
+						$servername = "localhost";
+						$username = "root";
+						$password = "";
+						$dbname= "crst_dashboard";
+						// Create Connection
+						$conn = new mysqli($servername, $username, $password, $dbname);
+						
+						$result = $conn->query("select job_id from job_ticket");
+						
+						while ($row = $result->fetch_assoc()) {
+									  unset($job_id);
+									  $job_id = $row['job_id']; 
+									  echo '<option value="'.$job_id.'">'.$job_id.'</option>';
+									 
+						}
+						echo "</select>";
+						echo "</div>";
+						?>
+
 						<div class="tabinner detail">
 						<label>Received Date</label>
 						<input name="received" type="date" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
-						<label>Location</label>
-						<input name="location" type="text" class="contact-prefix">
+						<label>Location</label><select name='location' class="contact-prefix">
+						<?php
+						$result1 = $conn->query("select location from materials");
+						
+						while ($row1 = $result1->fetch_assoc()) {
+									  unset($location);
+									  $location = $row1['location']; 
+									  echo '<option value="'.$location.'">'.$location.'</option>';
+									 
+						}
+						
+						?>
+						</select>
 						</div>
 						<div class="tabinner detail">
-						<label>Checked In</label>
-						<input name="checked_in" type="text" class="contact-prefix">
+						<label>Checked In</label><select name='checked_in' class="contact-prefix">
+						<?php
+						$result1 = $conn->query("select checked_in from materials");
+						
+						while ($row1 = $result1->fetch_assoc()) {
+									  unset($checked_in);
+									  $checked_in = $row1['checked_in']; 
+									  echo '<option value="'.$checked_in.'">'.$checked_in.'</option>';
+									 
+						}
+						
+						?>
+						</select>
 						</div>
 						<div class="tabinner detail">
-						<label>Material</label>
+						<label>Material</label><select name='material' class="contact-prefix">
+						<?php
+						$result1 = $conn->query("select material from materials");
+						
+						while ($row1 = $result1->fetch_assoc()) {
+									  unset($material);
+									  $material = $row1['material']; 
+									  echo '<option value="'.$material.'">'.$material.'</option>';
+									 
+						}
+						
+						?>
+						</select>
 						<input name="material" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
-						<label>Type</label>
+						<label>Type</label><select name='type' class="contact-prefix">
+						<?php
+						$result1 = $conn->query("select type from materials");
+						
+						while ($row1 = $result1->fetch_assoc()) {
+									  unset($type);
+									  $type = $row1['type']; 
+									  echo '<option value="'.$type.'">'.$type.'</option>';
+									 
+						}
+						
+						?>
+						</select>
 						<input name="type" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
@@ -66,10 +122,7 @@ require ("header.php");
 						echo "</select>";
 						echo "</div>";
 						?>
-						<div class="tabinner detail">
-						<label>Expected Quantity</label>
-						<input name="expected_quantity" type="text" class="contact-prefix">
-						</div>
+						
 						<div class="tabinner detail">
 						<label>Height</label>
 						<input name="height" type="text" class="contact-prefix">

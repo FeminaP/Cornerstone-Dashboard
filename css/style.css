@@ -195,6 +195,7 @@ background-color:#fff;
   width:auto;
   top:100px;
   height:auto;
+  display:fixed;
   position: absolute;
  padding:15px 0 0 25px;
 	z-index:1;

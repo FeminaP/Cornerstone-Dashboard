@@ -12,7 +12,26 @@ require ("header.php");
 		<div class="search-boxleft">
 			<form action="edit_doc.php" method="post" >
 				<label>Quick Search</label>
-				<input name="frmSearch" type="text" placeholder="Search for a specific client">
+				<?php
+						$servername = "localhost";
+						$username = "root";
+						$password = "";
+						$dbname= "crst_dashboard";
+						// Create Connection
+						$conn = new mysqli($servername, $username, $password, $dbname);
+						$result = $conn->query("select title from documentation");
+						
+						echo "<select name='frmSearch'>";
+						while ($row = $result->fetch_assoc()) {
+									  unset($title);
+									  $title = $row['title']; 
+									  echo '<option value="'.$title.'">'.$title.'</option>';
+									 
+						}
+						echo "</select>";
+						
+						?>
+				
 				<input id="SubmitBtn" type="submit" value="SUBMIT" >
 			</form>
 		</div>
@@ -45,7 +64,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 		
 		echo "<h2>".$row['title']."</h2><br>";
-		echo "<textarea>".$row['text']."</textarea><br><br>";
+		echo nl2br($row['text'])."<br><br>";
     }
 	echo "<br>";
 } else {

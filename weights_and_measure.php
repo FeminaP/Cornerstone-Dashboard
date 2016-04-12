@@ -31,14 +31,25 @@ if ($conn->connect_error) {
 $result = mysqli_query($conn,"SELECT * FROM materials");
 echo "<table  border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
 echo "<thead>";
-echo "<tr><th> Job ID </th><th> Materials Odered </th><th> Expected Date </th><th> Recieved Date </th><th> Location </th><th> Checked In </th><th> Material </th><th> Type </th><th> Quantity </th><th> Vendor </th><th> Expected Quantity </th><th> Height </th><th> Weight </th><th> Size </th></tr>";
+echo "<tr><th> Job ID </th><th> Client Name </th><th> Job Name </th><th> Recieved Date </th><th> Location </th><th> Checked In </th><th> Material </th><th> Type </th><th> Quantity </th><th> Vendor </th><th> Height </th><th> Weight </th><th> Size </th></tr>";
 echo "</thead>";
 if ($result->num_rows > 0) {
     // output data of each row
 	
     while($row = $result->fetch_assoc()) {
 		
-		echo "<tr><td>".$row["job_id"]."</td><td>".  $row["materials_ordered"]."</td><td>". $row["expected"]. "</td><td>". $row["received"]. "</td><td>". $row["location"]."</td><td>". $row["checked_in"]. "</td><td>". $row["material"]. "</td><td>". $row["type"]. "</td><td>". $row["quantity"]. "</td><td>". $row["vendor"]. "</td><td>". $row["expected_quantity"]. "</td><td>". $row["height"]. "</td><td>". $row["weight"]. "</td><td>". $row["size"]. "</td></tr>";
+		$job_id = $row['job_id'];
+		
+		$result1 = mysqli_query($conn,"SELECT client_name,project_name FROM job_ticket WHERE job_id='$job_id' ");
+		    while($row1 = $result1->fetch_assoc()){
+				$client_name = $row1["client_name"];
+				$project_name = $row1["project_name"];
+			}
+		
+		
+		
+		
+		echo "<tr><td>".$row["job_id"]."</td><td>".$client_name."</td><td>".$project_name."</td><td>". $row["received"]. "</td><td>". $row["location"]."</td><td>". $row["checked_in"]. "</td><td>". $row["material"]. "</td><td>". $row["type"]. "</td><td>". $row["quantity"]. "</td><td>". $row["vendor"]. "</td><td>". $row["height"]. "</td><td>". $row["weight"]. "</td><td>". $row["size"]. "</td></tr>";
     }
 	echo "<br>";
 } else {
