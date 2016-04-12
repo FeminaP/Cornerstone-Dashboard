@@ -47,7 +47,7 @@ require ("header.php");
 
 					?>
 					<div class = "content" >
-<form action="update_vendor.php" id="form" method="POST">
+			<form action="update_vendor.php" id="form" method="POST">
 				<div class="newclienttab-inner">
 					<div class="tabinner detail">					
 					<label>Vendor Name</label>

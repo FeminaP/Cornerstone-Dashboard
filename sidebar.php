@@ -5,8 +5,8 @@
     <li><a href=""><i class="icon"><img src="images/web-icons/postoffice.png"></i>Post Offices</a></li>
     <li><a href="clients.php"><i class="icon"><img src="images/web-icons/clients.png"></i>Clients</a></li>
     <li><a href="vendors.php"><i class="icon"><img src="images/web-icons/vendors.png"></i>Vendors</a></li>
-    <li><a href=""><i class="icon"><img src="images/web-icons/documentation.png"></i>Documentation</a></li>
-	<li><a href=""><i class="icon"><img src="images/web-icons/reminders.png"></i>Reminders</a></li>
+    <li><a href="documentation.php"><i class="icon"><img src="images/web-icons/documentation.png"></i>Documentation</a></li>
+	<li><a href="reminders.php"><i class="icon"><img src="images/web-icons/reminders.png"></i>Reminders</a></li>
     <li><a href="weights_and_measure.php"><i class="icon"><img src="images/web-icons/w_m.png"></i>Weights and Measures</a></li>
 	<li><a href=""><i class="icon"><img src="images/web-icons/archive.png"></i>Archive Jobs</a></li>
   </ul>

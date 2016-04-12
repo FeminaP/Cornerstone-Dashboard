@@ -56,7 +56,7 @@ require ("header.php");
 						$conn = new mysqli($servername, $username, $password, $dbname);
 						$result = $conn->query("select vendor_name from vendors");
 						echo("<div class='tabinner detail'>");
-						echo "<label>Vendor</label><select name='vendor_name'>";
+						echo "<label>Vendor</label><select name='vendor'>";
 						while ($row = $result->fetch_assoc()) {
 									  unset($vendor_name);
 									  $vendor_name = $row['vendor_name']; 
