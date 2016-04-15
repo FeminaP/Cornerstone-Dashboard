@@ -2,10 +2,21 @@
 require ("header.php");
 ?>
 <div class="content">
+<div class="search-cont">
+	<div class="searchcont-detail">
+		<div class="search-boxleft">
+			<form action="edit_job.php" method="post" >
+				<label>Quick Search</label>
+				<input name="frmSearch" type="text" placeholder="Search for a specific job">
+				<input id="SubmitBtn" type="submit" value="SUBMIT" >
+			</form>
+		</div>
+	</div>
+</div>
 <div class="contacts-title">
 	<h2>New Job Ticket</h2>
-	<a class="save-button" href="#">Save</a>
 </div>
+
 <div class="dashboard-detail">
 	<div class="newcontacts-outer">
 		<div class="tab-content">
@@ -79,6 +90,153 @@ require ("header.php");
 					<div class="tabinner detail">
 					<label>Special Instructions</label>
 					<textarea name="special_instructions" class="contact-prefix"></textarea>
+					</div>
+					
+					<div class="tabinner detail">
+					<label>Mail Class</label>
+					<input name="mail_class" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Rate</label>
+					<input name="rate" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Processing Category</label>
+					<input name="processing_category" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Mail Dimensions</label>
+					<input name="mail_dim" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Weights and Measures</label>
+					<input name="weights_measures" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Permit</label>
+					<input name="permit" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Bmeu</label>
+					<input name="bmeu" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Based On</label>
+					<input name="based_on" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Non Profit Number</label>
+					<input name="non_profit_number" type="text" class="contact-prefix">
+					</div>
+					
+					<div class="tabinner detail">
+					<label>Data Location</label>
+					<input name="data_loc" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Records Total</label>
+					<input name="records_total" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Domestic</label>
+					<input name="domestic" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Foreigns</label>
+					<input name="foreigns" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Data Source</label>
+					<input name="data_source" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Data Received</label>
+					<input name="data_received" type="date" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Data Completed</label>
+					<input name="data_completed" type="date" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Processed By</label>
+					<input name="processed_by" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>DQR Sent</label>
+					<input name="dqr_sent" type="date" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Exact</label>
+					<input name="exact" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Mail Foreigns</label>
+					<input name="mail_foreigns" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Household</label>
+					<input name="household" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>NCOA</label>
+					<input name="ncoa" type="text" class="contact-prefix">
+					</div>
+					
+					<div class="tabinner detail">
+					<input type="checkbox" name="hold_postage" class="contact-prefix" ><label>Hold Postage</label>
+					</div>
+					<div class="tabinner detail">
+					<input name="postage_paid" type="checkbox" class="contact-prefix"><label>Postage Paid</label>
+					</div>
+					<div class="tabinner detail">
+					<label>Print Template</label>
+					<input name="print_template" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Special Address Formatting</label>
+					<input name="special_address" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Method of Delivery</label>
+					<input name="delivery" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Completed Date</label>
+					<input name="completed" type="date" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Tasks</label>
+					<select name="tasks[]" multiple>
+					  <option value="Mail Merge">Mail Merge</option>
+					  <option value="Letter Printing">Letter Printing</option>
+					  <option value="In-House Envelope Printing">In-House Envelope Printing</option>
+					  <option value="Tabbing">Tabbing</option>
+					  <option value="Folding">Folding</option>
+					  <option value="Inserting">Inserting</option>
+					  <option value="Sealing">Sealing</option>
+					  <option value="Collating">Collating</option>
+					  <option value="Labeling">Labeling</option>
+					  <option value="Print Permit">Print Permit</option>
+					  <option value="Correct Permit">Correct Permit</option>
+					  <option value="Carrier Route">Carrier Route</option>
+					  <option value="Endorsement line">Endorsement line</option>
+					  <option value="Address Printing">Address Printing</option>
+					  <option value="Tag as Political">Tag as Political</option>
+					  <option value="Inkjet Printing">Inkjet Printing</option>
+					  <option value="Glue Dots">Glue Dots</option>
+					</select>
+					</div>
+					<div class="tabinner detail">
+					<label>Task 1</label>
+					<input name="task1" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Task 2</label>
+					<input name="task2" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Task 3</label>
+					<input name="task3" type="text" class="contact-prefix">
 					</div>
 					
 					
