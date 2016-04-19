@@ -33,9 +33,9 @@ div.pager span.active {
 <div class="search-cont">
 	<div class="searchcont-detail">
 		<div class="search-boxleft">
-			<form action="editClient.php" method="post" >
+			<form action="client_search.php" method="post" >
 				<label>Quick Search</label>
-				<input name="frmSearch" type="text" placeholder="Search for a specific client">
+				<input id="search" name="frmSearch" type="text" placeholder="Search for a specific client">
 				<input id="SubmitBtn" type="submit" value="SUBMIT" >
 			</form>
 		</div>
@@ -59,9 +59,9 @@ if ($conn->connect_error) {
 $result = mysqli_query($conn,"SELECT * FROM client_info");
 
 
-echo " <div id='table-scroll'><table  border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
+echo " <div id='table-scroll'><table id='table' border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
 echo "<thead>";
-echo "<tr><th> Client name </th><th> Contact name </th><th> Address </th><th> Contact Phone </th><th> Email </th><th> Website </th><th> Category </th><th> Title </th><th> Notes </th></tr>";
+echo "<tr><th>  </th><th> Client name </th><th> Contact name </th><th> Address </th><th> Contact Phone </th><th> Email </th><th> Website </th><th> Category </th><th> Title </th><th> Notes </th></tr>";
 echo "</thead>";
 echo "<tbody>";
 
@@ -72,8 +72,8 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 		
 
-
-		echo "<tr><td>".$row["client_name"]."</td><td>".  $row["contact_name"]."</td><td>". $row["client_add"]. "</td><td>". $row["contact_phone"]. "</td><td>". $row["contact_email"]."</td><td>". $row["website"]. "</td><td>". $row["category"]. "</td><td>". $row["title"]. "</td><td>". $row["notes"]. "</td></tr>";
+		$foo=$row['client_name'];
+		echo "<tr><th>"."<a href='http://localhost/crst_dashboard/edit_client.php?client_name=$foo'>"."Edit"."</a></th><td>".$row["client_name"]."</td><td>".  $row["contact_name"]."</td><td>". $row["client_add"]. "</td><td>". $row["contact_phone"]. "</td><td>". $row["contact_email"]."</td><td>". $row["website"]. "</td><td>". $row["category"]. "</td><td>". $row["title"]. "</td><td>". $row["notes"]. "</td></tr>";
     }
 	echo "</tbody></table></div><br>";
 } else {
@@ -113,7 +113,21 @@ $('table.paginated').each(function() {
     }
     $pager.insertBefore($table).find('span.page-number:first').addClass('active');
 });
-</script>	
+
+$("#search").keyup(function(){
+        _this = this;
+        // Show only matching TR, hide rest of them
+        $.each($("#table tbody tr"), function() {
+            if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+               $(this).hide();
+            else
+               $(this).show();                
+        });
+    }); 
+
+</script>
+
+	
 
 	
 

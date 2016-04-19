@@ -2,27 +2,7 @@
 require ("header.php");
 ?>
 
-<div class="content">
-<div class="search-cont">
-	<div class="searchcont-detail">
-		<div class="search-boxleft">
-			<form action="edit_job.php" method="post" >
-				<label>Quick Search</label>
-				<input name="frmSearch" type="text" placeholder="Search for a specific job">
-				<input id="SubmitBtn" type="submit" value="SUBMIT" >
-			</form>
-		</div>
-	</div>
-</div>
-<div class="contacts-title">
-	<h2>New Job Ticket</h2>
-</div>
-
-<div class="dashboard-detail">
-	<div class="newcontacts-outer">
-		<div class="tab-content">
-			
-			  <form action="add_job_ticket.php" method="post">
+			<form action="add_job_ticket.php" method="post">
 				<div class="newclienttab-inner">
 				<?php
 						$servername = "localhost";
@@ -89,7 +69,10 @@ require ("header.php");
 					<label>Expected Quantity</label>
 					<input name="expected_quantity" type="text" class="contact-prefix">
 					</div>
-					
+					<div class="tabinner detail">
+					<label>Special Instructions</label>
+					<textarea name="special_instructions" class="contact-prefix"></textarea>
+					</div>
 					
 					<div class="tabinner detail">
 					<label>Mail Class</label>
@@ -238,88 +221,9 @@ require ("header.php");
 					<input name="task3" type="text" class="contact-prefix">
 					</div>
 					
-					<div class="tabinner detail">
-					<label>Completed Date</label>
-					<input name="completed_date" type="date" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Data Hours</label>
-					<input name="data_hrs" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Graphic Design Hours</label>
-					<input name="gd_hrs" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Initial Record Count</label>
-					<input name="initialrec_count" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Manual</label>
-					<input name="manual" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Uncorrected</label>
-					<input name="uncorrected" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Unverifiable</label>
-					<input name="unverifiable" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Foreigns</label>
-					<input name="bs_foreigns" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Exact</label>
-					<input name="bs_exact" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Loose</label>
-					<input name="loose" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Householded</label>
-					<input name="householded" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Basic</label>
-					<input name="basic" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>NCOA Errors</label>
-					<input name="ncoa_errors" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Domestic</label>
-					<input name="bs_domestic" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>NCOA</label>
-					<input name="bs_ncoa" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Final Count</label>
-					<input name="final_count" type="text" class="contact-prefix">
-					</div>
-					
-					<div class="tabinner detail">
-					<label>Special Instructions</label>
-					<textarea name="special_instructions" class="contact-prefix"></textarea>
-					</div>
-					
 					
 				</div>
 				<div class="form-bottom">
 					<input id="btn" type="submit" value="Save" name="submit_form">
 				</div>
 			</form>
-			
-			
-		</div>
-	</div>
-	
-</div>
-</div>
-
-		

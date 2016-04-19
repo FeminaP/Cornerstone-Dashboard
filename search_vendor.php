@@ -15,12 +15,12 @@ require ("header.php");
 						if ($conn->connect_error) {
 							die("Connection failed: " . $conn->connect_error);
 						} 
-						if (!empty($_REQUEST['frmSearch'])){
+						//if (!empty($_REQUEST['frmSearch'])){
 							
-							$term = mysql_real_escape_string($_REQUEST['frmSearch']);
+							//$term = mysql_real_escape_string($_REQUEST['frmSearch']);
 							
-
-							$sql = "SELECT * FROM vendors WHERE vendor_name = '$term'"; 
+							$temp = $_GET['vendor_name'];
+							$sql = "SELECT * FROM vendors WHERE vendor_name = '$temp' "; 
 							$result = mysqli_query($conn,$sql); 
 							
 							
@@ -38,11 +38,11 @@ require ("header.php");
 								$vendor_add = $row["vendor_add"];
 								$display = "yes";
 							
-							} 
+							/*} 
 							else {
 								echo "No results found";
 								$display = "no";
-							}
+							}*/
 						}
 
 					?>

@@ -70,16 +70,38 @@ $task1 = $_POST['task1'];
 $task2 = $_POST['task2'];
 $task3 = $_POST['task3'];
 
+$completed_date = $_POST['completed_date'];
+$data_hrs = $_POST['data_hrs'];
+$gd_hrs = $_POST['gd_hrs'];
+$initialrec_count = $_POST['initialrec_count'];
+$manual = $_POST['manual'];
+$uncorrected = $_POST['uncorrected'];
+$unverifiable = $_POST['unverifiable'];
+$bs_foreigns = $_POST['bs_foreigns'];
+$bs_exact = $_POST['bs_exact'];
+$loose = $_POST['loose'];
+$householded = $_POST['householded'];
+$basic = $_POST['basic'];
+$ncoa_errors = $_POST['ncoa_errors'];
+$bs_ncoa = $_POST['bs_ncoa'];
+$final_count = $_POST['final_count'];
+$bs_domestic = $_POST['bs_domestic'];
+
+
+
 $sql = "INSERT INTO job_ticket(client_name,project_name,ticket_date,due_date,created_by,special_instructions,materials_ordered,materials_expected,estimate_number,expected_quantity) VALUES ('$client_name', '$project_name', '$ticket_date', '$due_date','$created_by','$special_instructions','$materials_ordered','$materials_expected','$estimate_number','$expected_quantity')";
 $result = $conn->query($sql) or die('Error querying database 0.');
 
 
 $result1 = mysqli_query($conn,"SELECT job_id from job_ticket WHERE client_name='$client_name' and project_name='$project_name'");
-if ($result1->num_rows > 0) {
-	while($row1 = $result1->fetch_assoc()) {
-		$_SESSION["job_id"]=$row1['job_id'];
-	}
-}
+$row1 = mysqli_fetch_row($result1);
+//if ($result1->num_rows > 0) {
+//	while($row1 = $result1->fetch_assoc()) {
+//		$temp = row1['job_id'];
+//	}
+//}
+
+$_SESSION["job_id"] = $row1[0];
 $job_id = $_SESSION["job_id"];
 
 $sql1 = "INSERT INTO mail_info(job_id,mail_class,rate,processing_category,mail_dim,weights_measures,permit,bmeu,based_on,non_profit_number) VALUES ('$job_id', '$mail_class', '$rate', '$processing_category','$mail_dim','$weights_measures','$permit','$bmeu','$based_on','$non_profit_number')";
@@ -90,6 +112,10 @@ $result3 = $conn->query($sql2) or die('Error querying database 2.');
 
 $sql3 = "INSERT INTO production(job_id,hold_postage,postage_paid,print_template,special_address ,delivery,completed,task1,task2,task3,tasks) VALUES ('$job_id', '$hold_postage', '$postage_paid', '$print_template','$special_address','$delivery','$completed','$task1','$task2','$task3','$tasks')";
 $result4 = $conn->query($sql3) or die('Error querying database 3.');
+
+$sql4 = "INSERT INTO blue_sheet(job_id,completed_date,data_hrs,gd_hrs,initialrec_count,manual,uncorrected,unverifiable,bs_foreigns,bs_exact,loose,
+householded,basic, ncoa_errors,bs_ncoa,final_count,bs_domestic) VALUES ('$job_id','$completed_date','$data_hrs','$gd_hrs','$initialrec_count','$manual','$uncorrected','$unverifiable','$bs_foreigns','$bs_exact','$loose','$householded','$basic','$ncoa_errors','$bs_ncoa','$final_count','$bs_domestic' )";
+$result5 = $conn->query($sql4) or die('Error querying database 4.');
 
 
 

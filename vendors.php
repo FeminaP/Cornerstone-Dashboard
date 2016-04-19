@@ -40,13 +40,13 @@ $result = mysqli_query($conn,"SELECT * FROM vendors");
 
 if ($result->num_rows > 0) {
     // output data of each row
-	
+
     while($row = $result->fetch_assoc()) {
 		
 		echo "<div data-role='main' class='ui-content'>";
 			echo "<div><br><br><br>";
 				$x = $row["vendor_name"];
-				echo "<B>".$row["vendor_name"]."</B>"."<br>";
+				echo "<B><a href='http://localhost/crst_dashboard/search_vendor.php?vendor_name=$x'>".$row["vendor_name"]."</a></B>"."<br>";
 				echo "Contact Name: ".$row["vendor_contact"]."<br>";
 				echo "Address: ".$row["vendor_add"]."<br>";
 				echo "Email: ".$row["vendor_email"]."<br>";
