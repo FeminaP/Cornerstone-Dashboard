@@ -13,6 +13,12 @@ if ($conn->connect_error) {
 } 
 session_start();
 
+$user_name = $_SESSION['user'];
+date_default_timezone_set('America/New_York');
+$today = date("F j, Y, g:i a");
+$_SESSION['date'] = $today;
+$job = "created job ticket";
+
 $client_name = $_POST['client_name'];
 $project_name = $_POST['project_name'];
 $_SESSION["client_name"] = $client_name;
@@ -25,6 +31,7 @@ $special_instructions = $_POST['special_instructions'];
 $materials_ordered = $_POST['materials_ordered'];
 $materials_expected = $_POST['materials_expected'];
 $expected_quantity = $_POST['expected_quantity'];
+$job_status = $_POST['job_status'];
 
 
 
@@ -89,7 +96,7 @@ $bs_domestic = $_POST['bs_domestic'];
 
 
 
-$sql = "INSERT INTO job_ticket(client_name,project_name,ticket_date,due_date,created_by,special_instructions,materials_ordered,materials_expected,estimate_number,expected_quantity) VALUES ('$client_name', '$project_name', '$ticket_date', '$due_date','$created_by','$special_instructions','$materials_ordered','$materials_expected','$estimate_number','$expected_quantity')";
+$sql = "INSERT INTO job_ticket(client_name,project_name,ticket_date,due_date,created_by,special_instructions,materials_ordered,materials_expected,estimate_number,expected_quantity,job_status) VALUES ('$client_name', '$project_name', '$ticket_date', '$due_date','$created_by','$special_instructions','$materials_ordered','$materials_expected','$estimate_number','$expected_quantity','$job_status')";
 $result = $conn->query($sql) or die('Error querying database 0.');
 
 
@@ -116,6 +123,12 @@ $result4 = $conn->query($sql3) or die('Error querying database 3.');
 $sql4 = "INSERT INTO blue_sheet(job_id,completed_date,data_hrs,gd_hrs,initialrec_count,manual,uncorrected,unverifiable,bs_foreigns,bs_exact,loose,
 householded,basic, ncoa_errors,bs_ncoa,final_count,bs_domestic) VALUES ('$job_id','$completed_date','$data_hrs','$gd_hrs','$initialrec_count','$manual','$uncorrected','$unverifiable','$bs_foreigns','$bs_exact','$loose','$householded','$basic','$ncoa_errors','$bs_ncoa','$final_count','$bs_domestic' )";
 $result5 = $conn->query($sql4) or die('Error querying database 4.');
+
+$sql5 = "INSERT INTO invoice(job_id) VALUES ('$job_id')";
+$result6 = $conn->query($sql5) or die('Error querying database 5.');
+
+$sql6 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
+$result7 = $conn->query($sql6) or die('Error querying database 5.');
 
 
 

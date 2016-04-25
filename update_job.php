@@ -8,7 +8,18 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
+
+
+
 		session_start();
+		
+		$user_name = $_SESSION['user'];
+		date_default_timezone_set('America/New_York');
+		$today = date("F j, Y, g:i a");
+		$_SESSION['date'] = $today;
+		$job = "updated job ticket";
+		
+		
 		$job_id = $_SESSION["job_id"];           
 		$project_name = $_POST['project_name'];
 		$ticket_date = $_POST['ticket_date'];
@@ -19,6 +30,7 @@ if ($conn->connect_error) {
 		$materials_ordered = $_POST['materials_ordered'];
 		$materials_expected = $_POST['materials_expected'];
 		$expected_quantity = $_POST['expected_quantity'];
+		$job_status = $_POST['job_status'];
 		{
 		$mail_class = $_POST['mail_class'];
 		$rate = $_POST['rate'];
@@ -72,7 +84,7 @@ if ($conn->connect_error) {
 		$final_count = $_POST['final_count'];
 		$bs_domestic = $_POST['bs_domestic'];
 		}
-		$sql = "UPDATE job_ticket SET project_name = '$project_name',ticket_date = '$ticket_date',due_date = '$due_date',created_by = '$created_by',estimate_number = '$estimate_number',special_instructions = '$special_instructions',materials_ordered = '$materials_ordered',materials_expected = '$materials_expected',expected_quantity = '$expected_quantity'  WHERE job_id = $job_id ";
+		$sql = "UPDATE job_ticket SET project_name = '$project_name',ticket_date = '$ticket_date',due_date = '$due_date',created_by = '$created_by',estimate_number = '$estimate_number',special_instructions = '$special_instructions',materials_ordered = '$materials_ordered',materials_expected = '$materials_expected',expected_quantity = '$expected_quantity',job_status = '$job_status'  WHERE job_id = $job_id ";
 		$result = $conn->query($sql) or die('Error querying database.');
 		
 		$sql1 = "UPDATE mail_info SET mail_class = '$mail_class',rate = '$rate',processing_category = '$processing_category',mail_dim = '$mail_dim',weights_measures = '$weights_measures',permit = '$permit',bmeu = '$bmeu',based_on = '$based_on',non_profit_number = '$non_profit_number' WHERE job_id = $job_id ";
@@ -87,6 +99,9 @@ if ($conn->connect_error) {
 		
 		$sql4 = "UPDATE blue_sheet SET  completed_date = '$completed_date',data_hrs = '$data_hrs',gd_hrs = '$gd_hrs',initialrec_count = '$initialrec_count',manual = '$manual',uncorrected = '$uncorrected',unverifiable = '$unverifiable',bs_foreigns = '$bs_foreigns',bs_exact = '$bs_exact',loose = '$loose',householded = '$householded',basic = '$basic',ncoa_errors = '$ncoa_errors',bs_ncoa = '$bs_ncoa',final_count = '$final_count',bs_domestic = '$bs_domestic' WHERE job_id = $job_id ";
 		$result4 = $conn->query($sql4) or die('Error querying database 4.');
+		
+		$sql5 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
+		$result5 = $conn->query($sql5) or die('Error querying database 5.');
 		
 		
  

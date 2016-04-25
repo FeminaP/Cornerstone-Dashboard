@@ -58,13 +58,13 @@ require ("header.php");
 					<?php
 					
 						
-						$result1 = $conn->query("select pm from projectmanager");
+						$result1 = $conn->query("select initial from users");
 						echo("<div class='tabinner detail'>");
 						echo "<label>Created By</label><select name='created_by'>";
-						
+						echo "<option disabled selected value> -- select an option -- </option>";
 						while ($row1 = $result1->fetch_assoc()) {
-									  unset($pm);
-									  $created_by = $row1['pm']; 
+									  unset($created_by);
+									  $created_by = $row1['initial']; 
 									  echo '<option value="'.$created_by.'">'.$created_by.'</option>';
 									 
 						}
@@ -88,6 +88,18 @@ require ("header.php");
 					<div class="tabinner detail">
 					<label>Expected Quantity</label>
 					<input name="expected_quantity" type="text" class="contact-prefix">
+					</div>
+					<div class="tabinner detail">
+					<label>Job Status</label>
+					<select name='job_status'>
+					<option disabled selected value> -- select an option -- </option>
+					<option value="in P.M.">in P.M.</option>
+					<option value="in Production">in Production</option>
+					<option value="on hold">on hold</option>
+					<option value="waiting for materials">waiting for materials</option>
+					<option value="waiting for data">waiting for data</option>
+					<option value="waiting for postage">waiting for postage</option>
+					</select>
 					</div>
 					
 					
@@ -156,10 +168,24 @@ require ("header.php");
 					<label>Data Completed</label>
 					<input name="data_completed" type="date" class="contact-prefix">
 					</div>
-					<div class="tabinner detail">
-					<label>Processed By</label>
-					<input name="processed_by" type="text" class="contact-prefix">
-					</div>
+					<?php
+					
+						
+						$result2 = $conn->query("select initial from users");
+						echo("<div class='tabinner detail'>");
+						echo "<label>Assigned to</label><select name='processed_by'>";
+						
+						while ($row2 = $result2->fetch_assoc()) {
+									  //unset($pm);
+									  $processed_by = $row2['initial']; 
+									  echo '<option value="'.$processed_by.'">'.$processed_by.'</option>';
+									 
+						}
+						echo "</select>";
+						//echo "<input name='created_by' type='text' class='contact-prefix'>";
+						echo "</div>";
+						?>
+					
 					<div class="tabinner detail">
 					<label>DQR Sent</label>
 					<input name="dqr_sent" type="date" class="contact-prefix">

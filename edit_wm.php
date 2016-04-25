@@ -22,8 +22,8 @@ if (!empty($_REQUEST['frmSearch'])){
 		$row = $result->fetch_assoc();	
 	
 		$job_id = $row['job_id'];
-		$materials_ordered = $row['materials_ordered'];
-		$expected = $row['expected'];
+		//$materials_ordered = $row['materials_ordered'];
+		//$expected = $row['expected'];
 		$received = $row['received'];
 		$location = $row['location'];
 		$checked_in = $row['checked_in'];
@@ -31,7 +31,7 @@ if (!empty($_REQUEST['frmSearch'])){
 		$type = $row['type'];
 		$vendor = $row['vendor'];
 		$quantity = $row['quantity'];
-		$expected_quantity= $row['expected_quantity'];
+		//$expected_quantity= $row['expected_quantity'];
 		$height = $row['height'];
 		$weight = $row['weight'];
 		$size = $row['size'];
@@ -63,14 +63,8 @@ $(document).ready(function(){
 					<label>Job Id</label>
 					<input name="job_id" type="text" class="contact-prefix" value="<?php echo $job_id; ?>">
 					</div>
-					<div class="tabinner detail">
-					<label>Materials Ordered</label>
-					<input name="materials_ordered" type="date" class="contact-prefix" value="<?php echo $materials_ordered; ?>">
-					</div>
-					<div class="tabinner detail">
-					<label>Expected Date</label>
-					<input name="expected" type="date" class="contact-prefix" value="<?php echo $expected; ?>">
-					</div>
+					
+					
 					<div class="tabinner detail">
 					<label>Received Date</label>
 					<input name="received" type="date" class="contact-prefix" value="<?php echo $received; ?>">
@@ -101,10 +95,7 @@ $(document).ready(function(){
 					<label>Vendor</label>
 					<input name="vendor" type="text" class="contact-prefix" value="<?php echo $vendor; ?>">
 					</div>
-					<div class="tabinner detail">
-					<label>Expected Quantity</label>
-					<input name="expected_quantity" type="text" class="contact-prefix" value="<?php echo $expected_quantity; ?>">
-					</div>
+					
 					<div class="tabinner detail">
 					<label>Height</label>
 					<input name="height" type="text" class="contact-prefix" value="<?php echo $height; ?>">

@@ -40,11 +40,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-if (!empty($_REQUEST['frmSearch'])){
+
 	
-	$term = mysqli_real_escape_string($conn,$_REQUEST['frmSearch']);
-	
-	$sql = "SELECT * FROM job_ticket WHERE job_id = '$term'"; 
+	//$term = mysqli_real_escape_string($conn,$_REQUEST['frmSearch']);
+	$temp = $_GET['job_id'];
+	// (job_id = '$term') OR
+	$sql = "SELECT * FROM job_ticket WHERE job_id = '$temp'"; 
 	$result = mysqli_query($conn,$sql); 
 	
 	
@@ -63,7 +64,8 @@ if (!empty($_REQUEST['frmSearch'])){
 		$special_instructions = $row['special_instructions'];
 		$materials_ordered = $row['materials_ordered'];
 		$materials_expected = $row['materials_expected'];
-		$expected_quantity = $row['expected_quantity'];		
+		$expected_quantity = $row['expected_quantity'];
+		$job_status = $row['job_status'];
 		$display = "yes";
 		
 		$sql1 = "SELECT * FROM mail_info WHERE job_id = '$job_id'"; 
@@ -153,7 +155,7 @@ if (!empty($_REQUEST['frmSearch'])){
 		echo "No results found";
 		$display = "no";
 	}
-}
+
 ?>
 
 <div class="content">
@@ -197,6 +199,19 @@ if (!empty($_REQUEST['frmSearch'])){
 				<div class="tabinner detail">
 				<label>Expected Quantity</label>
 				<input name="expected_quantity" type="text"value="<?php echo $expected_quantity ; ?>" class="contact-prefix">
+				</div>
+				<div class="tabinner detail">
+				<label>Job Status</label>
+				<input name="job_status" type="text"value="<?php echo $job_status ; ?>" class="contact-prefix">
+				<select name='job_status'>
+					<option disabled selected value> -- select an option -- </option>
+					<option value="in P.M.">in P.M.</option>
+					<option value="in Production">in Production</option>
+					<option value="on hold">on hold</option>
+					<option value="waiting for materials">waiting for materials</option>
+					<option value="waiting for data">waiting for data</option>
+					<option value="waiting for postage">waiting for postage</option>
+				</select>
 				</div>
 				
 				
@@ -266,7 +281,7 @@ if (!empty($_REQUEST['frmSearch'])){
 				<input name="data_completed" type="date" value="<?php echo $data_completed ; ?>" class="contact-prefix">
 				</div>
 				<div class="tabinner detail">
-				<label>Processed By</label>
+				<label>Assigned to</label>
 				<input name="processed_by" type="text" value="<?php echo $processed_by ; ?>" class="contact-prefix">
 				</div>
 				<div class="tabinner detail">
