@@ -13,31 +13,9 @@ if ($conn->connect_error) {
 } 
 
 $job_id = $_POST["job_id"];
-$postage = $_POST["postage"];
-$invoice_number = $_POST["invoice_number"];
-$residual_returned = $_POST["residual_returned"];
-$week_followup = $_POST["2week_followup"];
-$notes=$_POST["notes"];
-$status = $_POST["status"];
-$reason = $_POST["reason"];
-session_start();
-$user_name = $_SESSION['user'];
-date_default_timezone_set('America/New_York');
-$today = date("F j, Y, g:i a");
-$_SESSION['date'] = $today;
-$job = "archived job";
 
-$sql = "UPDATE invoice SET postage='$postage',invoice_number='$invoice_number',residual_returned='$residual_returned',2week_followup='$week_followup',notes='$notes',status='$status',reason='$reason' WHERE job_id = '$job_id'";
-
-$result0 = $conn->query($sql) or die('Error querying database.');
-
-if($status != NULL){
-	
-$sql100 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
-$result100 = $conn->query($sql100) or die('Error querying database 100.');
-	
-$sql1 = "INSERT INTO archive_jobs ( job_id,client_name,project_name,ticket_date,due_date,created_by,estimate_number,special_instructions,materials_ordered,materials_expected,expected_quantity,job_status)  SELECT job_id,client_name,project_name,ticket_date,due_date,created_by,estimate_number,special_instructions,materials_ordered,materials_expected,expected_quantity,job_status FROM job_ticket WHERE job_id = '$job_id'";
-$result = $conn->query($sql1) or die('Error querying database 100.') ;
+$sql = "INSERT INTO archive_jobs ( job_id,client_name,project_name,ticket_date,due_date,created_by,estimate_number,special_instructions,materials_ordered,materials_expected,expected_quantity,job_status)  SELECT job_id,client_name,project_name,ticket_date,due_date,created_by,estimate_number,special_instructions,materials_ordered,materials_expected,expected_quantity,job_status FROM job_ticket WHERE job_id = '$job_id'";
+$result = $conn->query($sql) or die('Error querying database 100.') ;
 $result1 = mysqli_query($conn,"DELETE FROM job_ticket WHERE job_id = '$job_id'");
 
 
@@ -110,13 +88,11 @@ archive_jobs.task3 = production.task3
  WHERE archive_jobs.job_id = production.job_id AND production.job_id = '$job_id'");
 $result13 = mysqli_query($conn,"DELETE FROM production WHERE job_id = '$job_id'");
 
-$result14 = mysqli_query($conn,"UPDATE archive_jobs SET archive_date = '$today' WHERE job_id = '$job_id'");
 
-}
  
 $conn->close();
 
-header("location: http://localhost/crst_dashboard/customer_service.php ");
+header("location: http://localhost/crst_dashboard/archive.php ");
 exit();
 
 ?>

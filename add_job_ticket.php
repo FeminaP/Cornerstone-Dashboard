@@ -128,7 +128,7 @@ $sql5 = "INSERT INTO invoice(job_id) VALUES ('$job_id')";
 $result6 = $conn->query($sql5) or die('Error querying database 5.');
 
 $sql6 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
-$result7 = $conn->query($sql6) or die('Error querying database 5.');
+$result7 = $conn->query($sql6) or die('Error querying database 6.');
 
 
 

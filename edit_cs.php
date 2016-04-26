@@ -67,6 +67,7 @@ if ($conn->connect_error) {
 					<div class="tabinner detail">
 					<label>Status</label>
 					<select name='status'>
+					<option disabled selected value> -- select an option -- </option>
 					<option value="Finished">Finished</option>
 					<option value="Cancelled">Cancelled</option>
 					<option value="Closed">Closed</option>

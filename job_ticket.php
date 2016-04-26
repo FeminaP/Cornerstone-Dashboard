@@ -33,7 +33,7 @@ require ("header.php");
 						$conn = new mysqli($servername, $username, $password, $dbname);
 						$result = $conn->query("select client_name from client_info");
 						echo("<div class='tabinner detail'>");
-						echo "<label>CLient</label><select name='client_name'>";
+						echo "<label>Client</label><select name='client_name'>";
 						while ($row = $result->fetch_assoc()) {
 									  unset($client_name);
 									  $client_name = $row['client_name']; 
