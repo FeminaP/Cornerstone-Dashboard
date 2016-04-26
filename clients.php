@@ -1,6 +1,7 @@
 <?php
 require ("header.php");
 ?>
+<script src="sorttable.js"></script>
 <style>
 #table-scroll {
   height:auto;
@@ -41,6 +42,8 @@ div.pager span.active {
 		</div>
 	</div>
 </div>
+
+
 <?php
 
 $servername = "localhost";
@@ -59,7 +62,7 @@ if ($conn->connect_error) {
 $result = mysqli_query($conn,"SELECT * FROM client_info");
 
 
-echo " <div id='table-scroll'><table id='table' border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
+echo " <div id='table-scroll'><table id='table' border='1' cellspacing='2' cellpadding='2' class='sortable' >"; // start a table tag in the HTML
 echo "<thead>";
 echo "<tr><th>  </th><th> Client name </th><th> Contact name </th><th> Address </th><th> Contact Phone </th><th> Email </th><th> Website </th><th> Category </th><th> Title </th><th> Notes </th></tr>";
 echo "</thead>";
@@ -88,10 +91,7 @@ $conn->close();
 </div>		
 </div>
 <script>
-
-
-
-$('table.paginated').each(function() {
+$('table.sortable').each(function() {
     var currentPage = 0;
     var numPerPage = 10;
     var $table = $(this);

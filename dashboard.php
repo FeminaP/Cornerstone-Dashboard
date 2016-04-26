@@ -27,11 +27,9 @@ require('header.php');
 
 <?php
 $conn = new mysqli("localhost","root","","crst_dashboard");
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-
 session_start();
 $user = $_SESSION['user'];
 echo "<h1>Welcome ".$user."!</h1><br><br>";
@@ -91,8 +89,6 @@ Femina: <?php echo "$num_rows5 \n"; ?><br>
 
 <br><br><p>Jobs in Production:</p><?php echo "$num_rows6 \n"; ?><br>
 
-<br><br><p>Jobs taken care by Customer Service:</p><?php echo "$num_rows6 \n"; ?><br>
-
 <br><br><p>Jobs Invoiced:</p><?php echo "$num_rows7 \n"; ?><br>
 
 <?php
@@ -121,6 +117,22 @@ if ($result8->num_rows > 0) {
 } else {
     echo "0 results";
 }
+
+
+$result = mysqli_query($conn,"SELECT * FROM timestamp ORDER BY time DESC LIMIT 10");
+
+echo "<table  border='1' cellspacing='2' cellpadding='2'>"; // start a table tag in the HTML
+echo "<tr><th> User </th><th> Job </th><th> Time </th></tr>";
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row['user'] . "</td><td>" . $row['job'] ."</td><td>".$row['time']."</td></tr>"; 
+    }
+	echo "<br>";
+} else {
+    echo "0 results from jobticket";
+}
+echo "</table>"; //Close the table in HTML
 $conn->close();
 
 ?>
