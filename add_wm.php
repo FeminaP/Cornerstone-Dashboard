@@ -4,7 +4,7 @@ require ("header.php");
 <div class="content">
 	<div class="contacts-title">
 		<h2>New Weights and Measure</h2>
-		<a class="save-button" href="#">Save</a>
+		
 	</div>
 	<div class="dashboard-detail">
 		<div class="newcontacts-outer">
@@ -21,7 +21,7 @@ require ("header.php");
 						// Create Connection
 						$conn = new mysqli($servername, $username, $password, $dbname);
 						
-						$result = $conn->query("select job_id from job_ticket");
+						$result = $conn->query("SELECT job_id FROM job_ticket WHERE job_ticket.job_id NOT IN (SELECT job_id FROM materials)");
 						
 						while ($row = $result->fetch_assoc()) {
 									  unset($job_id);
@@ -38,8 +38,9 @@ require ("header.php");
 						<input name="received" type="date" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
-						<label>Location</label><select name='location' class="contact-prefix">
+						<label>Location</label>
 						<?php
+						/* <select name='location' class="contact-prefix">
 						$result1 = $conn->query("select location from materials");
 						
 						while ($row1 = $result1->fetch_assoc()) {
@@ -48,13 +49,14 @@ require ("header.php");
 									  echo '<option value="'.$location.'">'.$location.'</option>';
 									 
 						}
-						
+						</select> */
 						?>
-						</select>
+						<input name="location" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
-						<label>Checked In</label><select name='checked_in' class="contact-prefix">
+						<label>Checked In</label>
 						<?php
+						/* <select name='checked_in' class="contact-prefix">
 						$result1 = $conn->query("select checked_in from materials");
 						
 						while ($row1 = $result1->fetch_assoc()) {
@@ -63,13 +65,15 @@ require ("header.php");
 									  echo '<option value="'.$checked_in.'">'.$checked_in.'</option>';
 									 
 						}
-						
+						</select> */
 						?>
-						</select>
+						<input name="checked_in" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
-						<label>Material</label><select name='material' class="contact-prefix">
+						<label>Material</label>
 						<?php
+						/*
+						<select name='material' class="contact-prefix">
 						$result1 = $conn->query("select material from materials");
 						
 						while ($row1 = $result1->fetch_assoc()) {
@@ -78,14 +82,15 @@ require ("header.php");
 									  echo '<option value="'.$material.'">'.$material.'</option>';
 									 
 						}
-						
+						</select> */
 						?>
-						</select>
+						
 						<input name="material" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
-						<label>Type</label><select name='type' class="contact-prefix">
+						<label>Type</label>
 						<?php
+						/* <select name='type' class="contact-prefix">
 						$result1 = $conn->query("select type from materials");
 						
 						while ($row1 = $result1->fetch_assoc()) {
@@ -94,9 +99,10 @@ require ("header.php");
 									  echo '<option value="'.$type.'">'.$type.'</option>';
 									 
 						}
-						
-						?>
 						</select>
+						*/
+						?>
+						
 						<input name="type" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
@@ -134,6 +140,10 @@ require ("header.php");
 						<div class="tabinner detail">
 						<label>Size</label>
 						<input name="size" type="text" class="contact-prefix">
+						</div>
+						<div class="tabinner detail">
+						<label>Based On</label>
+						<input name="based_on" type="text" class="contact-prefix">
 						</div>
 					</div>
 					<div class="form-bottom">

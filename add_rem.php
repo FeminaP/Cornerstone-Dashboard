@@ -4,7 +4,7 @@ require ("header.php");
 <div class="content">
 	<div class="contacts-title">
 		<h2>Reminders</h2>
-		<a class="save-button" href="#">Save</a>
+		
 	</div>
 	<div class="dashboard-detail">
 		<div class="newcontacts-outer">

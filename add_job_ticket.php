@@ -68,7 +68,7 @@ $postage_paid = (isset($_POST['postage_paid'])) ? "yes" : "no";
 $print_template = $_POST['print_template'];
 $special_address = $_POST['special_address'];
 $delivery = $_POST['delivery'];
-$completed = $_POST['completed'];
+//$completed = $_POST['completed'];
 @$tasks_array= $_POST['tasks']; 
 if( is_array($tasks_array)){
 $tasks = implode(', ', $_POST['tasks']);
@@ -117,7 +117,7 @@ $result2 = $conn->query($sql1) or die('Error querying database 1.');
 $sql2 = "INSERT INTO mail_data(job_id,data_loc,records_total,domestic,foreigns,data_source,data_received,data_completed,processed_by,dqr_sent,exact,mail_foreigns,household,ncoa) VALUES ('$job_id', '$data_loc', '$records_total', '$domestic','$foreigns','$data_source','$data_received','$data_completed','$processed_by','$dqr_sent','$exact','$mail_foreigns','$household','$ncoa')";
 $result3 = $conn->query($sql2) or die('Error querying database 2.');
 
-$sql3 = "INSERT INTO production(job_id,hold_postage,postage_paid,print_template,special_address ,delivery,completed,task1,task2,task3,tasks) VALUES ('$job_id', '$hold_postage', '$postage_paid', '$print_template','$special_address','$delivery','$completed','$task1','$task2','$task3','$tasks')";
+$sql3 = "INSERT INTO production(job_id,hold_postage,postage_paid,print_template,special_address ,delivery,task1,task2,task3,tasks) VALUES ('$job_id', '$hold_postage', '$postage_paid', '$print_template','$special_address','$delivery','$task1','$task2','$task3','$tasks')";
 $result4 = $conn->query($sql3) or die('Error querying database 3.');
 
 $sql4 = "INSERT INTO blue_sheet(job_id,completed_date,data_hrs,gd_hrs,initialrec_count,manual,uncorrected,unverifiable,bs_foreigns,bs_exact,loose,
@@ -130,8 +130,7 @@ $result6 = $conn->query($sql5) or die('Error querying database 5.');
 $sql6 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
 $result7 = $conn->query($sql6) or die('Error querying database 6.');
 
-$sql7 = "INSERT INTO materials(job_id) VALUES ('$job_id')";
-$result8= $conn->query($sql7) or die('Error querying database 7.');
+
 
 $sql8 = "INSERT INTO yellow_sheet (job_id) VALUES ('$job_id')";
 $result9= $conn->query($sql8) or die('Error querying database 8.');

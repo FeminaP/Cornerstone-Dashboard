@@ -80,17 +80,16 @@ archive_jobs.postage_paid = production.postage_paid,
 archive_jobs.print_template = production.print_template,
 archive_jobs.special_address = production.special_address,
 archive_jobs.delivery = production.delivery,
-archive_jobs.completed = production.completed,
 archive_jobs.tasks = production.tasks,
 archive_jobs.task1 = production.task1,
 archive_jobs.task2 = production.task2,
 archive_jobs.task3 = production.task3
  WHERE archive_jobs.job_id = production.job_id AND production.job_id = '$job_id'");
 $result13 = mysqli_query($conn,"DELETE FROM production WHERE job_id = '$job_id'");
+
 $result14 = mysqli_query($conn,"DELETE FROM yellow_sheet WHERE job_id = '$job_id'");
 
 
- 
 $conn->close();
 
 header("location: http://localhost/crst_dashboard/archive.php ");

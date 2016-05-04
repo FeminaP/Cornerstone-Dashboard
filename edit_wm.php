@@ -9,9 +9,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-if (!empty($_REQUEST['frmSearch'])){
+
 	
-	$term = mysqli_real_escape_string($conn,$_REQUEST['frmSearch']);
+	$term = $_GET['job_id'];
 	
 	$sql = "SELECT * FROM materials WHERE job_id = '$term'"; 
 	$result = mysqli_query($conn,$sql); 
@@ -35,6 +35,7 @@ if (!empty($_REQUEST['frmSearch'])){
 		$height = $row['height'];
 		$weight = $row['weight'];
 		$size = $row['size'];
+		$based_on = $row['based_on'];
 		$display = "yes";
     
 	} 
@@ -42,7 +43,7 @@ if (!empty($_REQUEST['frmSearch'])){
 		echo "No results found";
 		$display = "no";
 	}
-}
+
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
@@ -107,6 +108,10 @@ $(document).ready(function(){
 					<div class="tabinner detail">
 					<label>Size</label>
 					<input name="size" type="text" class="contact-prefix" value="<?php echo $size; ?>">
+					</div>
+					<div class="tabinner detail">
+					<label>Based On</label>
+					<input name="based_on" type="text" class="contact-prefix" value="<?php echo $based_on; ?>">
 					</div>
 				</div>
 				<div class="form-bottom">

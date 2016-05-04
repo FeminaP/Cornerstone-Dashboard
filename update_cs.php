@@ -34,7 +34,7 @@ $result0 = $conn->query($sql) or die('Error querying database.');
 if($status != NULL){
 	
 $sql100 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
-$result100 = $conn->query($sql100) or die('Error querying database 100.');
+$result100 = $conn->query($sql100) or die('Error querying database 101.');
 	
 $sql1 = "INSERT INTO archive_jobs ( job_id,client_name,project_name,ticket_date,due_date,created_by,estimate_number,special_instructions,materials_ordered,materials_expected,expected_quantity,job_status)  SELECT job_id,client_name,project_name,ticket_date,due_date,created_by,estimate_number,special_instructions,materials_ordered,materials_expected,expected_quantity,job_status FROM job_ticket WHERE job_id = '$job_id'";
 $result = $conn->query($sql1) or die('Error querying database 100.') ;
@@ -109,8 +109,10 @@ archive_jobs.task2 = production.task2,
 archive_jobs.task3 = production.task3
  WHERE archive_jobs.job_id = production.job_id AND production.job_id = '$job_id'");
 $result13 = mysqli_query($conn,"DELETE FROM production WHERE job_id = '$job_id'");
+$result15 = mysqli_query($conn,"DELETE FROM yellow_sheet WHERE job_id = '$job_id'");
 
 $result14 = mysqli_query($conn,"UPDATE archive_jobs SET archive_date = '$today' WHERE job_id = '$job_id'");
+
 
 }
  

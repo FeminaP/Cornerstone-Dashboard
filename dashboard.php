@@ -113,7 +113,7 @@ $result8 = mysqli_query($conn,"SELECT job_id,client_name,project_name,due_date,j
 
 echo " <div id='table-scroll'><table id='table' border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
 echo "<thead>";
-echo "<tr><th>  </th><th> Job Id </th><th> Client </th><th> Project Name </th><th> Due Date </th><th> Job Status </th></tr>";
+echo "<tr><th>  </th><th> Job Id </th><th> Client </th><th> Project Name </th><th> Due Date </th><th> Job Status </th><th> Records Total </th><th> Assigned To </th></tr>";
 echo "</thead>";
 echo "<tbody>";
 
@@ -123,9 +123,12 @@ if ($result8->num_rows > 0) {
 	
     while($row8 = $result8->fetch_assoc()) {
 		
-
 		$foo=$row8['job_id'];
-		echo "<tr><th>"."<a href='http://localhost/crst_dashboard/edit_job.php?job_id=$foo'>"."Edit"."</a></th><td>".$row8["job_id"]."</td><td>".  $row8["client_name"]."</td><td>". $row8["project_name"]. "</td><td>". $row8["due_date"]. "</td><td>". $row8["job_status"]."</td></tr>";
+		
+		$result9 = mysqli_query($conn,"SELECT * FROM mail_data WHERE job_id = $foo");
+		$row9 = $result9->fetch_assoc();
+		
+		echo "<tr><th>"."<a href='http://localhost/crst_dashboard/edit_job.php?job_id=$foo'>"."Edit"."</a></th><td>".$row8["job_id"]."</td><td>".  $row8["client_name"]."</td><td>". $row8["project_name"]. "</td><td>". $row8["due_date"]. "</td><td>". $row8["job_status"]."</td><td>". $row9["records_total"]."</td><td>". $row9["processed_by"]."</td></tr>";
     }
 	echo "</tbody></table></div><br>";
 } else {

@@ -9,9 +9,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-if (!empty($_REQUEST['frmSearch'])){
+
 	
-	$term = mysqli_real_escape_string($conn,$_REQUEST['frmSearch']);
+	$term = $_GET['title'];
 	
 	$sql = "SELECT * FROM documentation WHERE title = '$term'"; 
 	$result = mysqli_query($conn,$sql); 
@@ -30,7 +30,7 @@ if (!empty($_REQUEST['frmSearch'])){
 		echo "No results found";
 		$display = "no";
 	}
-}
+
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>

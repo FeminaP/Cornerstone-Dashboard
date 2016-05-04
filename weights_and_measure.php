@@ -8,17 +8,7 @@ require('header.php');
 <h1>Weights and Measures</h1>
 <a href="add_wm.php" class="add_button">Add Weights and Measure</a>
 </div>
-<div class="search-cont">
-	<div class="searchcont-detail">
-		<div class="search-boxleft">
-			<form action="edit_wm.php" method="post" >
-				<label>Quick Search</label>
-				<input name="frmSearch" type="text" placeholder="Search for a specific client">
-				<input id="SubmitBtn" type="submit" value="SUBMIT" >
-			</form>
-		</div>
-	</div>
-</div>
+
 <?php
 $servername = "localhost";
 $username = "root";
@@ -32,7 +22,7 @@ if ($conn->connect_error) {
 $result = mysqli_query($conn,"SELECT * FROM materials");
 echo "<table  border='1' cellspacing='2' cellpadding='2' class='sortable' >"; // start a table tag in the HTML
 echo "<thead>";
-echo "<tr><th> Job ID </th><th> Client Name </th><th> Job Name </th><th> Recieved Date </th><th> Location </th><th> Checked In </th><th> Material </th><th> Type </th><th> Quantity </th><th> Vendor </th><th> Height </th><th> Weight </th><th> Size </th></tr>";
+echo "<tr><th> Job ID </th><th> Client Name </th><th> Job Name </th><th> Recieved Date </th><th> Location </th><th> Checked In </th><th> Material </th><th> Type </th><th> Quantity </th><th> Vendor </th><th> Height </th><th> Weight </th><th> Size </th><th> Based On </th></tr>";
 echo "</thead>";
 if ($result->num_rows > 0) {
     // output data of each row
@@ -50,7 +40,7 @@ if ($result->num_rows > 0) {
 		
 		
 		
-		echo "<tr><td>".$row["job_id"]."</td><td>".$client_name."</td><td>".$project_name."</td><td>". $row["received"]. "</td><td>". $row["location"]."</td><td>". $row["checked_in"]. "</td><td>". $row["material"]. "</td><td>". $row["type"]. "</td><td>". $row["quantity"]. "</td><td>". $row["vendor"]. "</td><td>". $row["height"]. "</td><td>". $row["weight"]. "</td><td>". $row["size"]. "</td></tr>";
+		echo "<tr><td><a href = 'http://localhost/crst_dashboard/edit_wm.php?job_id=$job_id'>".$row["job_id"]."</a></td><td>".$client_name."</td><td>".$project_name."</td><td>". $row["received"]. "</td><td>". $row["location"]."</td><td>". $row["checked_in"]. "</td><td>". $row["material"]. "</td><td>". $row["type"]. "</td><td>". $row["quantity"]. "</td><td>". $row["vendor"]. "</td><td>". $row["height"]. "</td><td>". $row["weight"]. "</td><td>". $row["size"]. "</td><td>". $row["based_on"]. "</td></tr>";
     }
 	echo "<br>";
 } else {

@@ -35,8 +35,9 @@ $quantity = $_POST['quantity'];
 $height = $_POST['height'];
 $weight = $_POST['weight'];
 $size = $_POST['size'];
+$based_on = $_POST['based_on'];
 
-$sql = "INSERT INTO materials(job_id,received,location,checked_in,material,type,vendor,quantity,height,weight,size) VALUES ('$job_id','$received','$location','$checked_in','$material','$type','$vendor','$quantity','$height','$weight','$size')";
+$sql = "INSERT INTO materials(job_id,received,location,checked_in,material,type,vendor,quantity,height,weight,size,based_on) VALUES ('$job_id','$received','$location','$checked_in','$material','$type','$vendor','$quantity','$height','$weight','$size','$based_on')";
 $result = $conn->query($sql) or die('Error querying database.');
 
 $sql6 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";

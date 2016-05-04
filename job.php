@@ -182,10 +182,7 @@ require ("header.php");
 					<label>Method of Delivery</label>
 					<input name="delivery" type="text" class="contact-prefix">
 					</div>
-					<div class="tabinner detail">
-					<label>Completed Date</label>
-					<input name="completed" type="date" class="contact-prefix">
-					</div>
+					
 					<div class="tabinner detail">
 					<label>Tasks</label>
 					<select name="tasks[]" multiple>

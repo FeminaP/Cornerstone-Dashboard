@@ -32,7 +32,8 @@ $quantity = $_POST['quantity'];
 $height = $_POST['height'];
 $weight = $_POST['weight'];
 $size = $_POST['size'];
-$sql = "UPDATE materials SET location='$location',received='$received',checked_in='$checked_in',material='$material',type='$type',vendor='$vendor',quantity='$quantity',height='$height',weight='$weight',size='$size' 
+$based_on = $_POST['based_on'];
+$sql = "UPDATE materials SET location='$location',received='$received',checked_in='$checked_in',material='$material',type='$type',vendor='$vendor',quantity='$quantity',height='$height',weight='$weight',size='$size', based_on = '$based_on' 
  WHERE job_id ='$job_id'";
 $result = $conn->query($sql) or die('Error querying database.');
 

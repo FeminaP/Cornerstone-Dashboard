@@ -61,7 +61,7 @@ if ($conn->connect_error) {
 		$print_template = $_POST['print_template'];
 		$special_address = $_POST['special_address'];
 		$delivery = $_POST['delivery'];
-		$completed = $_POST['completed'];
+		//$completed = $_POST['completed'];
 		$tasks = $_POST['tasks']; 
 		$task1 = $_POST['task1'];
 		$task2 = $_POST['task2'];
@@ -94,7 +94,7 @@ if ($conn->connect_error) {
 		$result2 = $conn->query($sql2) or die('Error querying database 2.');
 		
 		
-		$sql3 = "UPDATE production SET  hold_postage = '$hold_postage',postage_paid = '$postage_paid',print_template = '$print_template' , special_address = '$special_address',delivery = '$delivery',completed = '$completed',tasks = '$tasks',task1 = '$task1',task2 = '$task2',task3 = '$task3' WHERE job_id = $job_id ";
+		$sql3 = "UPDATE production SET  hold_postage = '$hold_postage',postage_paid = '$postage_paid',print_template = '$print_template' , special_address = '$special_address',delivery = '$delivery',tasks = '$tasks',task1 = '$task1',task2 = '$task2',task3 = '$task3' WHERE job_id = $job_id ";
 		$result3 = $conn->query($sql3) or die('Error querying database 3.');
 		
 		$sql4 = "UPDATE blue_sheet SET  completed_date = '$completed_date',data_hrs = '$data_hrs',gd_hrs = '$gd_hrs',initialrec_count = '$initialrec_count',manual = '$manual',uncorrected = '$uncorrected',unverifiable = '$unverifiable',bs_foreigns = '$bs_foreigns',bs_exact = '$bs_exact',loose = '$loose',householded = '$householded',basic = '$basic',ncoa_errors = '$ncoa_errors',bs_ncoa = '$bs_ncoa',final_count = '$final_count',bs_domestic = '$bs_domestic' WHERE job_id = $job_id ";

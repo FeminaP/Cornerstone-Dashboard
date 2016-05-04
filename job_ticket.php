@@ -174,7 +174,7 @@ require ("header.php");
 						$result2 = $conn->query("select initial from users");
 						echo("<div class='tabinner detail'>");
 						echo "<label>Assigned to</label><select name='processed_by'>";
-						
+						echo "<option disabled selected value> -- select an option -- </option>";
 						while ($row2 = $result2->fetch_assoc()) {
 									  //unset($pm);
 									  $processed_by = $row2['initial']; 
@@ -224,10 +224,6 @@ require ("header.php");
 					<div class="tabinner detail">
 					<label>Method of Delivery</label>
 					<input name="delivery" type="text" class="contact-prefix">
-					</div>
-					<div class="tabinner detail">
-					<label>Completed Date</label>
-					<input name="completed" type="date" class="contact-prefix">
 					</div>
 					<div class="tabinner detail">
 					<label>Tasks</label>

@@ -42,10 +42,9 @@ if ($conn->connect_error) {
 } 
 
 	
-	//$term = mysqli_real_escape_string($conn,$_REQUEST['frmSearch']);
+	
 	$temp = $_GET['job_id'];
-	// (job_id = '$term') OR
-	$sql = "SELECT * FROM job_ticket WHERE job_id = '$temp'"; 
+	$sql = "SELECT * FROM archive_jobs WHERE job_id = '$temp'"; 
 	$result = mysqli_query($conn,$sql); 
 	
 	
@@ -66,90 +65,61 @@ if ($conn->connect_error) {
 		$materials_expected = $row['materials_expected'];
 		$expected_quantity = $row['expected_quantity'];
 		$job_status = $row['job_status'];
+		
+		$mail_class = $row['mail_class'];
+		$rate = $row['rate'];
+		$processing_category = $row['processing_category'];
+		$mail_dim = $row['mail_dim'];
+		$weights_measures = $row['weights_measures'];
+		$permit = $row['permit'];
+		$bmeu = $row['bmeu'];
+		$based_on = $row['based_on'];
+		$non_profit_number = $row['non_profit_number'];
+		
+		$data_loc = $row['data_loc'];
+		$records_total = $row['records_total'];
+		$domestic = $row['domestic'];
+		$foreigns = $row['foreigns'];
+		$data_source = $row['data_source'];
+		$data_received = $row['data_received'];
+		$data_completed = $row['data_completed'];
+		$processed_by = $row['processed_by'];
+		$dqr_sent = $row['dqr_sent'];
+		$exact = $row['exact'];
+		$mail_foreigns = $row['mail_foreigns'];
+		$household = $row['household'];
+		$ncoa = $row['ncoa'];
+		
+		$hold_postage = $row['hold_postage'];
+		$postage_paid = $row['postage_paid'];
+		$print_template = $row['print_template'];
+		$special_address = $row['special_address'];
+		$delivery = $row['delivery'];
+		//$completed = $row['completed'];
+		$tasks = $row['tasks']; 
+		$task1 = $row['task1'];
+		$task2 = $row['task2'];
+		$task3 = $row['task3'];
+		
+		$completed_date = $row['completed_date'];
+		$data_hrs = $row['data_hrs'];
+		$gd_hrs = $row['gd_hrs'];
+		$initialrec_count = $row['initialrec_count'];
+		$manual = $row['manual'];
+		$uncorrected = $row['uncorrected'];
+		$unverifiable = $row['unverifiable'];
+		$bs_foreigns = $row['bs_foreigns'];
+		$bs_exact = $row['bs_exact'];
+		$loose = $row['loose'];
+		$householded = $row['householded'];
+		$basic = $row['basic'];
+		$ncoa_errors = $row['ncoa_errors'];
+		$bs_ncoa = $row['bs_ncoa'];
+		$final_count = $row['final_count'];
+		$bs_domestic = $row['bs_domestic'];
+				
 		$display = "yes";
-		
-		$sql1 = "SELECT * FROM mail_info WHERE job_id = '$job_id'"; 
-		$result1 = mysqli_query($conn,$sql1);
-		if ($result1->num_rows > 0) {
-			$row1 = $result1->fetch_assoc();	
-		
-				$mail_class = $row1['mail_class'];
-				$rate = $row1['rate'];
-				$processing_category = $row1['processing_category'];
-				$mail_dim = $row1['mail_dim'];
-				$weights_measures = $row1['weights_measures'];
-				$permit = $row1['permit'];
-				$bmeu = $row1['bmeu'];
-				$based_on = $row1['based_on'];
-				$non_profit_number = $row1['non_profit_number'];
-				
-		}
-		
-		$sql2 = "SELECT * FROM mail_data WHERE job_id = '$job_id'"; 
-		$result2 = mysqli_query($conn,$sql2);
-		if ($result2->num_rows > 0) {
-			$row2 = $result2->fetch_assoc();	
-		
-				$data_loc = $row2['data_loc'];
-				$records_total = $row2['records_total'];
-				$domestic = $row2['domestic'];
-				$foreigns = $row2['foreigns'];
-				$data_source = $row2['data_source'];
-				$data_received = $row2['data_received'];
-				$data_completed = $row2['data_completed'];
-				$processed_by = $row2['processed_by'];
-				$dqr_sent = $row2['dqr_sent'];
-				$exact = $row2['exact'];
-				$mail_foreigns = $row2['mail_foreigns'];
-				$household = $row2['household'];
-				$ncoa = $row2['ncoa'];
 
-		}
-		
-		$sql3 = "SELECT * FROM production WHERE job_id = '$job_id'"; 
-		$result3 = mysqli_query($conn,$sql3);
-		if ($result3->num_rows > 0) {
-			$row3 = $result3->fetch_assoc();	
-		
-				$hold_postage = $row3['hold_postage'];
-				$postage_paid = $row3['postage_paid'];
-				$print_template = $row3['print_template'];
-				$special_address = $row3['special_address'];
-				$delivery = $row3['delivery'];
-				//$completed = $row3['completed'];
-				$tasks = $row3['tasks']; 
-				$task1 = $row3['task1'];
-				$task2 = $row3['task2'];
-				$task3 = $row3['task3'];
-		}
-		
-		$sql4 = "SELECT * FROM blue_sheet WHERE job_id = '$job_id'"; 
-		$result4 = mysqli_query($conn,$sql4);
-		if ($result4->num_rows > 0) {
-			$row4 = $result4->fetch_assoc();	
-		
-				$completed_date = $row4['completed_date'];
-				$data_hrs = $row4['data_hrs'];
-				$gd_hrs = $row4['gd_hrs'];
-				$initialrec_count = $row4['initialrec_count'];
-				$manual = $row4['manual'];
-				$uncorrected = $row4['uncorrected'];
-				$unverifiable = $row4['unverifiable'];
-				$bs_foreigns = $row4['bs_foreigns'];
-				$bs_exact = $row4['bs_exact'];
-				$loose = $row4['loose'];
-				$householded = $row4['householded'];
-				$basic = $row4['basic'];
-				$ncoa_errors = $row4['ncoa_errors'];
-				$bs_ncoa = $row4['bs_ncoa'];
-				$final_count = $row4['final_count'];
-				$bs_domestic = $row4['bs_domestic'];
-				
-				
-				
-		}
-		
-    
 	} 
 	else {
 		echo "No results found";
@@ -163,7 +133,7 @@ if ($conn->connect_error) {
 			<div id="mydiv">
 			
 			  
-				<form action="update_job.php" method="post">
+				<form action="add_job_ticket.php" method="post">
 				<div class="tabinner detail">
 				<label>Client Name</label>
 				<input name="client_name" type="text" value="<?php echo $client_name ; ?>" class="contact-prefix">

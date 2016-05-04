@@ -47,7 +47,7 @@ if ($result1->num_rows > 0) {
 		
 		if($row['user'] == $_SESSION['user'] ){
 			
-			echo $row['text']."<br>";
+			echo $row['date'].":  ".$row['text']."<br>";
 		}
 		
 		
