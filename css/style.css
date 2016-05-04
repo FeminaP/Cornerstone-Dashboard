@@ -161,7 +161,7 @@ background-color:#fff;
 }
 
 .sidebar-list li:hover {
-	border-left: 6px solid #366CAC;
+	border-left: 6px solid #356CAC;
 	transition:all 500ms 0s;
 }
 
@@ -204,7 +204,7 @@ background-color:#fff;
 /* Client's Page */
 
 .add_button {
-	background-color:#366CAC;
+	background-color:#356CAC;
 	font-size: 16px;
 	font-weight:bold;
 	padding:10px;
@@ -221,4 +221,39 @@ background-color:#fff;
 .add_button a:hover{
 	color:white;
 	text-decoration:none;
+}
+
+/* Project Management */
+.pmsquare {
+	width:650px;
+	height:250px;
+	display:inline-block;
+	border:2px solid #356CAC;
+}
+
+.left {
+	width:30%;
+	display:inline-block;
+}
+
+.right {
+	width:30%;
+display:inline-block;
+}
+
+.center {
+	width:30%;
+display:inline-block;
+}
+
+.pmsquare h1 {
+	font-size:20px;
+	margin:0;
+	padding:0;
+}
+
+.pmsquare p {
+	font-size:18px;
+	margin:0;
+	padding:0;
 }

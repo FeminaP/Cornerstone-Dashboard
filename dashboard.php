@@ -20,10 +20,20 @@ require('header.php');
 	margin:0px;
 	padding:0px;
 }
+
+.float{
+    width: 100px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0;
+	background-color: white;    
+}
+
+
 </style>
 
 <div id="popup" onclick="hide('popup')">
-<p id="demo" ></p>
+<p id="demo1" ></p>
 
 <?php
 $conn = new mysqli("localhost","root","","crst_dashboard");
@@ -79,17 +89,21 @@ $num_rows7 = mysqli_num_rows($result7);
 $conn->close();
 
 ?>
-Estimates given: <?php echo "$num_rows \n"; ?><br>
-Job Tickets in Process: <?php echo "$num_rows2 \n"; ?><br>
+<div class = "float">Estimates given: <?php echo "$num_rows \n"; ?></div></br>
 
-<br><br><p>Assigned PM Jobs:</p><br>
+<div class = "float">Job Tickets in Process: <?php echo "$num_rows2 \n"; ?></div></br>
+
+<div class = "float"><p>Assigned PM Jobs:</p>
 Kevin: <?php echo "$num_rows3 \n"; ?><br>
 Anna: <?php echo "$num_rows4 \n"; ?><br>
 Femina: <?php echo "$num_rows5 \n"; ?><br>
+</div></br>
 
-<br><br><p>Jobs in Production:</p><?php echo "$num_rows6 \n"; ?><br>
+<div class = "float">Jobs in Production: <?php echo "$num_rows6 \n"; ?><br></div></br>
 
-<br><br><p>Jobs Invoiced:</p><?php echo "$num_rows7 \n"; ?><br>
+<div class = "float">Jobs Invoiced: <?php echo "$num_rows7 \n"; ?></div></br>
+
+
 
 <?php
 

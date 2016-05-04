@@ -87,6 +87,7 @@ archive_jobs.task2 = production.task2,
 archive_jobs.task3 = production.task3
  WHERE archive_jobs.job_id = production.job_id AND production.job_id = '$job_id'");
 $result13 = mysqli_query($conn,"DELETE FROM production WHERE job_id = '$job_id'");
+$result14 = mysqli_query($conn,"DELETE FROM yellow_sheet WHERE job_id = '$job_id'");
 
 
  

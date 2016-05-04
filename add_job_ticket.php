@@ -130,6 +130,12 @@ $result6 = $conn->query($sql5) or die('Error querying database 5.');
 $sql6 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
 $result7 = $conn->query($sql6) or die('Error querying database 6.');
 
+$sql7 = "INSERT INTO materials(job_id) VALUES ('$job_id')";
+$result8= $conn->query($sql7) or die('Error querying database 7.');
+
+$sql8 = "INSERT INTO yellow_sheet (job_id) VALUES ('$job_id')";
+$result9= $conn->query($sql8) or die('Error querying database 8.');
+
 
 
  
