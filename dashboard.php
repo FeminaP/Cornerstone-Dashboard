@@ -33,14 +33,14 @@ require('header.php');
 </style>
 
 <div id="popup" onclick="hide('popup')">
-<p id="demo1" ></p>
+<p id="demo"></p>
 
 <?php
 $conn = new mysqli("localhost","root","","crst_dashboard");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-session_start();
+//session_start();
 $user = $_SESSION['user'];
 echo "<h1>Welcome ".$user."!</h1><br><br>";
 echo "Your Task for today: <br><br>";
@@ -89,19 +89,19 @@ $num_rows7 = mysqli_num_rows($result7);
 $conn->close();
 
 ?>
-<div class = "float">Estimates given: <?php echo "$num_rows \n"; ?></div></br>
+<div>Estimates given: <?php echo "$num_rows \n"; ?></div></br>
 
-<div class = "float">Job Tickets in Process: <?php echo "$num_rows2 \n"; ?></div></br>
+<div>Job Tickets in Process: <?php echo "$num_rows2 \n"; ?></div></br>
 
-<div class = "float"><p>Assigned PM Jobs:</p>
+<div><p>Assigned PM Jobs:</p>
 Kevin: <?php echo "$num_rows3 \n"; ?><br>
 Anna: <?php echo "$num_rows4 \n"; ?><br>
 Femina: <?php echo "$num_rows5 \n"; ?><br>
 </div></br>
 
-<div class = "float">Jobs in Production: <?php echo "$num_rows6 \n"; ?><br></div></br>
+<div>Jobs in Production: <?php echo "$num_rows6 \n"; ?><br></div></br>
 
-<div class = "float">Jobs Invoiced: <?php echo "$num_rows7 \n"; ?></div></br>
+<div>Jobs Invoiced: <?php echo "$num_rows7 \n"; ?></div></br>
 
 
 
@@ -110,7 +110,7 @@ Femina: <?php echo "$num_rows5 \n"; ?><br>
 $conn = mysqli_connect("localhost","root","","crst_dashboard");
 $result8 = mysqli_query($conn,"SELECT job_id,client_name,project_name,due_date,job_status FROM job_ticket");
 
-
+// all current jobs
 echo " <div id='table-scroll'><table id='table' border='1' cellspacing='2' cellpadding='2' class='paginated' >"; // start a table tag in the HTML
 echo "<thead>";
 echo "<tr><th>  </th><th> Job Id </th><th> Client </th><th> Project Name </th><th> Due Date </th><th> Job Status </th><th> Records Total </th><th> Assigned To </th></tr>";
@@ -135,8 +135,10 @@ if ($result8->num_rows > 0) {
     echo "0 results";
 }
 
+//most recent timestamps
 
 $result = mysqli_query($conn,"SELECT * FROM timestamp ORDER BY time DESC LIMIT 10");
+
 
 echo "<table  border='1' cellspacing='2' cellpadding='2'>"; // start a table tag in the HTML
 echo "<tr><th> User </th><th> Job </th><th> Time </th></tr>";

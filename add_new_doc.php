@@ -12,12 +12,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-
-
 date_default_timezone_set('America/New_York');
 $today1 = date("F j, Y, g:i a");
 $job = "added new doc";
-
 
 $text = $_POST['text'];
 $title = $_POST['title'];

@@ -33,11 +33,6 @@ $materials_expected = $_POST['materials_expected'];
 $expected_quantity = $_POST['expected_quantity'];
 $job_status = $_POST['job_status'];
 
-
-
-//$one = $_SESSION["client_name"];
-//$two = $_SESSION['project_name'];
-
 $mail_class = $_POST['mail_class'];
 $rate = $_POST['rate'];
 $processing_category = $_POST['processing_category'];
@@ -62,13 +57,12 @@ $mail_foreigns = $_POST['mail_foreigns'];
 $household = $_POST['household'];
 $ncoa = $_POST['ncoa'];
 
-
 $hold_postage = (isset($_POST['hold_postage'])) ? "yes" : "no";
 $postage_paid = (isset($_POST['postage_paid'])) ? "yes" : "no";
 $print_template = $_POST['print_template'];
 $special_address = $_POST['special_address'];
 $delivery = $_POST['delivery'];
-//$completed = $_POST['completed'];
+//$completed = $_POST['completed']; commented because not needed
 @$tasks_array= $_POST['tasks']; 
 if( is_array($tasks_array)){
 $tasks = implode(', ', $_POST['tasks']);
@@ -102,11 +96,6 @@ $result = $conn->query($sql) or die('Error querying database 0.');
 
 $result1 = mysqli_query($conn,"SELECT job_id from job_ticket WHERE client_name='$client_name' and project_name='$project_name'");
 $row1 = mysqli_fetch_row($result1);
-//if ($result1->num_rows > 0) {
-//	while($row1 = $result1->fetch_assoc()) {
-//		$temp = row1['job_id'];
-//	}
-//}
 
 $_SESSION["job_id"] = $row1[0];
 $job_id = $_SESSION["job_id"];
@@ -130,14 +119,9 @@ $result6 = $conn->query($sql5) or die('Error querying database 5.');
 $sql6 = "INSERT INTO timestamp (user,time,job) VALUES ('$user_name', '$today','$job')";
 $result7 = $conn->query($sql6) or die('Error querying database 6.');
 
-
-
 $sql8 = "INSERT INTO yellow_sheet (job_id) VALUES ('$job_id')";
 $result9= $conn->query($sql8) or die('Error querying database 8.');
 
-
-
- 
 $conn->close();
 
 header("location: http://localhost/crst_dashboard/job_ticket.php");

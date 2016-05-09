@@ -39,70 +39,18 @@ require ("header.php");
 						</div>
 						<div class="tabinner detail">
 						<label>Location</label>
-						<?php
-						/* <select name='location' class="contact-prefix">
-						$result1 = $conn->query("select location from materials");
-						
-						while ($row1 = $result1->fetch_assoc()) {
-									  unset($location);
-									  $location = $row1['location']; 
-									  echo '<option value="'.$location.'">'.$location.'</option>';
-									 
-						}
-						</select> */
-						?>
 						<input name="location" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
 						<label>Checked In</label>
-						<?php
-						/* <select name='checked_in' class="contact-prefix">
-						$result1 = $conn->query("select checked_in from materials");
-						
-						while ($row1 = $result1->fetch_assoc()) {
-									  unset($checked_in);
-									  $checked_in = $row1['checked_in']; 
-									  echo '<option value="'.$checked_in.'">'.$checked_in.'</option>';
-									 
-						}
-						</select> */
-						?>
 						<input name="checked_in" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
 						<label>Material</label>
-						<?php
-						/*
-						<select name='material' class="contact-prefix">
-						$result1 = $conn->query("select material from materials");
-						
-						while ($row1 = $result1->fetch_assoc()) {
-									  unset($material);
-									  $material = $row1['material']; 
-									  echo '<option value="'.$material.'">'.$material.'</option>';
-									 
-						}
-						</select> */
-						?>
-						
 						<input name="material" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">
 						<label>Type</label>
-						<?php
-						/* <select name='type' class="contact-prefix">
-						$result1 = $conn->query("select type from materials");
-						
-						while ($row1 = $result1->fetch_assoc()) {
-									  unset($type);
-									  $type = $row1['type']; 
-									  echo '<option value="'.$type.'">'.$type.'</option>';
-									 
-						}
-						</select>
-						*/
-						?>
-						
 						<input name="type" type="text" class="contact-prefix">
 						</div>
 						<div class="tabinner detail">

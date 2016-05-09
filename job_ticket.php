@@ -69,7 +69,6 @@ require ("header.php");
 									 
 						}
 						echo "</select>";
-						//echo "<input name='created_by' type='text' class='contact-prefix'>";
 						echo "</div>";
 						?>
 					
@@ -182,7 +181,6 @@ require ("header.php");
 									 
 						}
 						echo "</select>";
-						//echo "<input name='created_by' type='text' class='contact-prefix'>";
 						echo "</div>";
 						?>
 					

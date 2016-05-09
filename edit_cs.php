@@ -13,9 +13,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-//if (!empty($_REQUEST['frmSearch'])){
-	
-	//$term = mysql_real_escape_string($_REQUEST['frmSearch']);
+
 	$temp=$_GET['job_id'];
 	
 	$sql = "SELECT * FROM invoice WHERE job_id = '$temp'"; 

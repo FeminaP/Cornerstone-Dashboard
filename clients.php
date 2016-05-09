@@ -90,6 +90,7 @@ $conn->close();
 </div>
 </div>		
 </div>
+<!--- script for making table sortable --->
 <script>
 $('table.sortable').each(function() {
     var currentPage = 0;

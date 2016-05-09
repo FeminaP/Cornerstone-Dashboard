@@ -2,6 +2,7 @@
 require ("header.php");
 ?>
 <?php
+//not using this page anymore
 $servername = "localhost";
 $username = "root";
 $password = "";

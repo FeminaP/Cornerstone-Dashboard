@@ -22,8 +22,6 @@ $_SESSION['date'] = $today;
 $job = "added new w&m";
 
 $job_id = $_POST['job_id'];
-//$materials_ordered = $_POST['materials_ordered'];
-//$expected = $_POST['expected'];
 $received = $_POST['received'];
 $location = $_POST['location'];
 $checked_in = $_POST['checked_in'];
@@ -31,7 +29,6 @@ $material = $_POST['material'];
 $type = $_POST['type'];
 $vendor = $_POST['vendor'];
 $quantity = $_POST['quantity'];
-//$expected_quantity= $_POST['expected_quantity'];
 $height = $_POST['height'];
 $weight = $_POST['weight'];
 $size = $_POST['size'];

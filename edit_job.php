@@ -116,7 +116,6 @@ if ($conn->connect_error) {
 				$print_template = $row3['print_template'];
 				$special_address = $row3['special_address'];
 				$delivery = $row3['delivery'];
-				//$completed = $row3['completed'];
 				$tasks = $row3['tasks']; 
 				$task1 = $row3['task1'];
 				$task2 = $row3['task2'];

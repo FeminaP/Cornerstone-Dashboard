@@ -13,9 +13,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-//if (!empty($_REQUEST['frmSearch'])){
-	
-	//$term = mysql_real_escape_string($_REQUEST['frmSearch']);
+
 	$temp=$_GET['client_name'];
 	
 	$sql = "SELECT * FROM client_info WHERE client_name = '$temp'"; 
@@ -40,11 +38,7 @@ if ($conn->connect_error) {
 		$sec1 = $row["sec1"];
 		$display = "yes";
     
-	//} 
-	//else {
-	//	echo "No results found";
-	//	$display = "no";
-	//}
+
 }
 
 ?>

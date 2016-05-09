@@ -26,7 +26,6 @@ $today = date("F j, Y, g:i a");
 $_SESSION['date'] = $today;
 $job = "added new weights and measure";
 
-
 $sql = "INSERT INTO w_and_m (vendor,material,size,height,weight,based_on) VALUES ('$vendor', '$material', '$size', '$height','$weight','$based_on')";
 $result = $conn->query($sql) or die('Error querying database.');
  

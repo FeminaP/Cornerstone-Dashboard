@@ -22,8 +22,6 @@ if ($conn->connect_error) {
 		$row = $result->fetch_assoc();	
 	
 		$job_id = $row['job_id'];
-		//$materials_ordered = $row['materials_ordered'];
-		//$expected = $row['expected'];
 		$received = $row['received'];
 		$location = $row['location'];
 		$checked_in = $row['checked_in'];
@@ -31,7 +29,6 @@ if ($conn->connect_error) {
 		$type = $row['type'];
 		$vendor = $row['vendor'];
 		$quantity = $row['quantity'];
-		//$expected_quantity= $row['expected_quantity'];
 		$height = $row['height'];
 		$weight = $row['weight'];
 		$size = $row['size'];

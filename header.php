@@ -26,7 +26,13 @@ $temp = $_SESSION["user"];
 			<li><a href="production.php">PRODUCTION</a></li>
 			<li><a href="project_management.php">PROJECT MANAGEMENT</a></li>
 			<li><a href="sales.php">SALES</a></li>
-			<li id="profile" ><a href=""><i class="icon"><img src="images/web-icons/user.png"></i><?php echo $temp; ?></a></li>
+			<li id="profile" class="dropdown">
+				<a class="dropbtn"><i class="icon"><img src="images/web-icons/user.png"></i><?php echo $temp; ?></a>
+				<div class="dropdown-content">
+				<a href="index.php">Logout</a>
+				</div>
+				
+			</li>
 		</ul>
 		
 </nav>

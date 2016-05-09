@@ -20,6 +20,7 @@ require ("header.php");
 						$conn = new mysqli($servername, $username, $password, $dbname);
 						$result = $conn->query("select vendor_name from vendors");
 						echo("<div class='tabinner detail'>");
+						//getting vendor from vendor table
 						echo "<label>Vendor   </label><select name='vendor'>";
 						while ($row = $result->fetch_assoc()) {
 									  unset($vendor_name);
@@ -29,7 +30,7 @@ require ("header.php");
 						}
 						echo "</select>";
 						echo "</div>";
-						
+						//getting materials from weights and measure
 						$result1 = $conn->query("select material from w_and_m");
 						echo("<div class='tabinner detail'>");
 						echo "<label>Material   </label><select name='material'>";
